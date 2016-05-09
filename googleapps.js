@@ -47,7 +47,9 @@
             res.writeHead(500, 'google auth error');
             return res.end();
           } else {
-            req.session.returnTo = req.url;
+            if (req.method === 'GET') {
+              req.session.returnTo = req.url;
+            }
             res.writeHead(302, {
               Location: authUrl
             });

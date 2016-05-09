@@ -35,6 +35,6 @@ module.exports = (domain, options = {}) ->
           return res.end()
 
         else
-          req.session.returnTo = req.url
+          req.session.returnTo = req.url if req.method == 'GET'
           res.writeHead 302, Location: authUrl
           return res.end()
